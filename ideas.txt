@@ -1,0 +1,12 @@
+login_id=account number
+cust_id=email
+bank=bank name
+name=customer name
+```````
+
+
+
+
+
+
+

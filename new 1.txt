@@ -1,0 +1,62 @@
+
+class Main
+{
+    
+    public static void main(String args[])
+    {
+    int a=1,b=5;
+    int result_count;
+    int result[] =waysToChooseSum(1,5);
+    for(int i=0;i<2;i++)
+    System.out.println(result[i]);
+}
+static int[] waysToChooseSum(int a, int b) {
+    int res[]=new int[2];
+    int i,l, temp,max=0;
+    
+    int sum[]=new int[10000000];
+    for(i=a;i<=b;i++)
+    {
+        temp=i;
+        while(temp>0)
+        {
+            sum[i]+=temp%10;
+            temp=temp/10;    
+
+        }
+        if(max<sum[i])
+        max=sum[i];
+        System.out.println(sum[i]);
+    }
+    int oc[]=new int[max];
+    for(i=0;i<max;i++)
+    {
+        oc[sum[i]]++;//number of times each sum occurs
+        System.out.println(oc[sum[i]]);
+    }
+    for(i=0;i<oc.length;i++)
+    System.out.println(oc[i]);
+    int ind=0;
+    max=0;
+    for (i = 0; i < oc.length; i++)
+      if (max <= oc[i])
+       {
+           max = oc[i];
+           ind=i;//find sum with maximum number of occurences
+       }
+       System.out.println(max);
+    //if (max == 1)
+    int num=0,win=0;
+    for (i = 0; i < oc.length; i++)
+    if(oc[i]==max)
+    {
+        num++;
+        win=win+oc[i];
+        System.out.println(num+" "+win);
+    }
+    res[0]=num;
+    res[1]=win;
+    return res;
+    
+}
+}
